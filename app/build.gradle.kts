@@ -80,11 +80,16 @@ dependencies {
     // Gson
     implementation("com.google.code.gson:gson:2.10.1")
     //Hilt
-    val hilt_version = "2.44"
+    val hilt_version = "2.49"
     implementation("com.google.dagger:hilt-android:$hilt_version")
     kapt("com.google.dagger:hilt-android-compiler:$hilt_version")
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
-    implementation("androidx.navigation:navigation-compose:2.7.7")
+
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+
+    val nav_version = "2.7.7"
+    implementation("androidx.navigation:navigation-compose:$nav_version")
+
+
 }
