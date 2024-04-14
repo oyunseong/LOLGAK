@@ -8,7 +8,8 @@ object Navigation {
 
     object Routes {
         const val USERS = "users"
-        const val HomeScreen = "home"
+        const val HomeScreen = "HomeScreen"
+        const val DetailUserScreen = "DetailUserScreen"
 //        const val REPOS = "$USERS/{$USER_ID}"
     }
 
