@@ -1,6 +1,7 @@
 package com.oys.lolgak.data.remote
 
-import com.oys.lolgak.data.remote.di.RiotGamesApi
+import com.oys.lolgak.data.remote.di.RiotGamesAccountApi
+import com.oys.lolgak.data.remote.di.RiotGamesSpectatorApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,16 +24,6 @@ object RiotRemoteModule {
             .build()
     }
 
-    @Provides
-    @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl("https://asia.api.riotgames.com/riot/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(okHttpClient)
-            .build()
-    }
-
     /***
      * @Provides 어노테이션이 붙은 메서드는 매개변수를 통해 다른 의존성을 주입받을 수 있습니다.
      * @Singleton으로 어노테이션된 의존성을 애플리케이션 수명 주기 동안 단 하나의 인스턴스로 관리합니다.
@@ -43,7 +34,23 @@ object RiotRemoteModule {
      */
     @Provides
     @Singleton
-    fun provideRiotGamesApi(retrofit: Retrofit): RiotGamesApi {
-        return retrofit.create(RiotGamesApi::class.java)
+    fun provideRiotGamesAccountApi(okHttpClient: OkHttpClient): RiotGamesAccountApi {
+        return Retrofit.Builder()
+            .baseUrl("https://asia.api.riotgames.com/riot/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
+            .build()
+            .create(RiotGamesAccountApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSpectatorV5Api(okHttpClient: OkHttpClient): RiotGamesSpectatorApi {
+        return Retrofit.Builder()
+            .baseUrl("https://kr.api.riotgames.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
+            .build()
+            .create(RiotGamesSpectatorApi::class.java)
     }
 }
