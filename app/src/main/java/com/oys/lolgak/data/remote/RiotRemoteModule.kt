@@ -45,7 +45,7 @@ object RiotRemoteModule {
 
     @Provides
     @Singleton
-    fun provideSpectatorV5Api(okHttpClient: OkHttpClient): RiotGamesSpectatorApi {
+    fun provideRiotGamesSpectatorV5Api(okHttpClient: OkHttpClient): RiotGamesSpectatorApi {
         return Retrofit.Builder()
             .baseUrl("https://kr.api.riotgames.com/")
             .addConverterFactory(GsonConverterFactory.create())
