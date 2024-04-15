@@ -10,6 +10,7 @@ object Navigation {
         const val USERS = "users"
         const val HomeScreen = "HomeScreen"
         const val DetailUserScreen = "DetailUserScreen"
+        const val SpellScreen = "SpellScreen"
 //        const val REPOS = "$USERS/{$USER_ID}"
     }
 

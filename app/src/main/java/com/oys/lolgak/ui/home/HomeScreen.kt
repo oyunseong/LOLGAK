@@ -59,7 +59,9 @@ fun HomeScreen(
                     )
                 }
 
-
+                HomeEvent.Test -> {
+                    navigate.invoke(Navigation.Routes.SpellScreen)
+                }
             }
 
         }
@@ -70,6 +72,8 @@ sealed interface HomeEvent {
     data class InputUserName(val name: String) : HomeEvent
     data class InputTag(val tag: String) : HomeEvent
     object OnSearchEvent : HomeEvent
+
+    object Test : HomeEvent
 
 }
 
@@ -102,6 +106,10 @@ fun HomeScreenContent(
         )
         Button(onClick = { uiEvent.invoke(HomeEvent.OnSearchEvent) }) {
             Text(text = "검색")
+        }
+
+        Button(onClick = { uiEvent.invoke(HomeEvent.Test) }) {
+            Text(text = "스펠")
         }
     }
 }

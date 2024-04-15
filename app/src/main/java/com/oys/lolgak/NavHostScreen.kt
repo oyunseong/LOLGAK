@@ -11,6 +11,7 @@ import com.google.gson.Gson
 import com.oys.lolgak.ui.detail.DetailUserScreen
 import com.oys.lolgak.ui.home.HomeScreen
 import com.oys.lolgak.ui.model.Account
+import com.oys.lolgak.ui.spell.SpellScreen
 
 
 @Composable
@@ -43,7 +44,7 @@ fun NavHostScreen() {
             HomeScreen(
                 navigate = ::navigate,
 
-            )
+                )
         }
 
         composable(
@@ -55,6 +56,13 @@ fun NavHostScreen() {
             val accountJson = backStackEntry.arguments?.getString("accountJson")
             val account = gson.fromJson(accountJson, Account::class.java)
             DetailUserScreen(account = account)
+        }
+
+        composable(
+            route = Navigation.Routes.SpellScreen
+        ) {
+            SpellScreen(
+            )
         }
     }
 
